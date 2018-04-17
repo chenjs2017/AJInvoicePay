@@ -1,0 +1,36 @@
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+
+
+<div style="margin: 5px" class="alert alert-danger" ng-show="page_load_error">
+    {{page_load_error}}
+</div>
+
+<div ng-show="salesInvoice">
+  <button id="customButton">Pay the invoice</button>
+  <div class="panel-body">Customer Name:  {{salesInvoice.bill_to_NameField}}</div>
+  <div class="panel-body">Total Amount Including VAT:  {{salesInvoice.salesLinesField[0].total_Amount_Incl_VATField}}</div>
+  <table>
+    <tr>
+      <td>Description</td>
+      <td>Quantity</td>
+      <td>Amount Including VAT</td>
+    <tr ng-repeat="line in salesInvoice.salesLinesField">
+      <td> {{line.descriptionField}}</td>
+      <td> {{line.quantityField}}&nbsp;&nbsp;{{line.unit_of_Measure_CodeField}}</td>
+      <td> {{line.amount_Including_VATField}}</td>
+    </tr>
+  </table>
+</div>
+
